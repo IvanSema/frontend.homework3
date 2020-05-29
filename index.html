@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>homework</title>
+</head>
+<body>
+    <div id='color'>
+        <input v-model="text" placeholder="отредактируй меня">
+        
+        <button @click="getStyle">Подтвердить</button>
+
+        <p v-bind:style='style'> {{ text }} </p>
+    </div>
+
+
+
+      <div id="arr">
+        <ul>
+            <li v-for="link in links"><a :href="link.link" :title="link.help">{{ link.name }}</a></li>
+        </ul>
+    </div>
+
+
+      <script>
+          let vm = new Vue({
+              el: '#color',
+              data:{
+                style: {
+                    display: 'none',
+                    color: ''
+                },
+                  text: ''
+                },
+                methods: {
+                    getStyle () {
+                        this.style = {
+                            display: 'block',
+                            color : '' + this.text};
+
+                    }
+                        }
+          });
+      </script>
+
+      <script>
+
+
+          let arr  = new Vue({
+          el: '#arr',
+          data: {
+              links : [
+          {name: 'Google', help: 'Searching Engine', link: 'https://google.com/'},
+          {name: 'Facebook', help: 'Social Network', link: 'https://facebook.com/'},
+          {name: 'Wiki', help: 'Information resource', link: 'https://wikipedia.org/'},
+          {name: 'Beetroot', help: 'BeetrootAcademy - our site', link: 'https://beetroot.academy/'}
+          ],
+          }
+      })
+
+
+      </script>
+
+
+
+</body>
+</html>
